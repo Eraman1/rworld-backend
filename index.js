@@ -22,6 +22,8 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://stockit.rworldsoftware.in",
   "https://r-world.vercel.app",
+  "https://stock-it.in",
+  "https://www.stock-it.in",
 ];
 
 app.use(
