@@ -19,6 +19,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5000",
+  "http://localhost:5502",
   "http://localhost:5173",
   "https://stockit.rworldsoftware.in",
   "https://r-world.vercel.app",
