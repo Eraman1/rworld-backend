@@ -39,6 +39,6 @@ router.post("/login", LoginUser);
 
 // @route   POST /api/auth/refresh
 // @desc    Refresh access token using refresh token
-// router.post("/refresh", RefreshAccessToken);
+router.post("/refresh", RefreshAccessToken);
 
 module.exports = router;
