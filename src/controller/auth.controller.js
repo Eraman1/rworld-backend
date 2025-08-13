@@ -45,14 +45,6 @@ const RefreshAccessToken = async (req, res) => {
     // Verify refresh token
     const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
 
-    // Verify refresh token matches DB
-    const user = await User.findById(decoded.userId);
-    if (!user || user.refreshToken !== refreshToken) {
-      return res
-        .status(403)
-        .json({ message: "Invalid or revoked refresh token" });
-    }
-
     // Generate new tokens
     const tokens = await getTokens(
       decoded.userId,
