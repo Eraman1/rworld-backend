@@ -49,7 +49,7 @@ router.get("/", getAllBlogs);
  *       404:
  *         description: Blog not found
  */
-router.get("/:id", verifyToken, getBlogById);
+router.get("/:id", getBlogById);
 
 /**
  * @swagger

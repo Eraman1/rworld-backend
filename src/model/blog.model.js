@@ -19,6 +19,9 @@ const BlogPostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    excerpt: {
+      type: String,
+    },
     image: String,
     author: AuthorSchema,
     date: {
@@ -29,6 +32,10 @@ const BlogPostSchema = new mongoose.Schema(
     category: String,
     tags: [String],
     tableOfContents: [String],
+    featured: {
+      type: Boolean,
+      default: false,
+    },
 
     // views: { type: Number, default: 0 },
     // likes: { type: Number, default: 0 },

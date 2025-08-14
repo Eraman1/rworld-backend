@@ -1,14 +1,45 @@
 const Blog = require("../model/blog.model");
 
 const getAllBlogs = async (req, res) => {
-    try {
-        const blogs = await Blog.find();
-        res.status(200).json(blogs);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Internal server error" });
+  try {
+    let { page, limit } = req.query;
+
+    if (page || limit) {
+      // Pagination mode
+      page = parseInt(page) || 1;
+      limit = parseInt(limit) || 10;
+
+      if (page < 1) page = 1;
+      if (limit < 1) limit = 10;
+
+      const skip = (page - 1) * limit;
+
+      const blogs = await Blog.find()
+        .skip(skip)
+        .limit(limit)
+        .sort({ createdAt: -1 });
+
+      const totalBlogs = await Blog.countDocuments();
+      const totalPages = Math.ceil(totalBlogs / limit);
+
+      return res.status(200).json({
+        totalBlogs,
+        totalPages,
+        currentPage: page,
+        limit,
+        blogs,
+      });
+    } else {
+      // No pagination → return all blogs
+      const blogs = await Blog.find().sort({ createdAt: -1 });
+      return res.status(200).json(blogs);
     }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };
+
 const getBlogById = async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
