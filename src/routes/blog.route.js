@@ -6,6 +6,7 @@ const {
   updateBlog,
   deleteBlog,
   getAllBlogs,
+  getBlogBySlug,
 } = require("../controller/blog.controller");
 const { verifyToken } = require("../middleware/auth.middleware");
 
@@ -29,6 +30,9 @@ const router = express.Router();
  *         description: List of all blogs
  */
 router.get("/", getAllBlogs);
+
+
+router.get("/slug/:slug", getBlogBySlug);
 
 /**
  * @swagger
