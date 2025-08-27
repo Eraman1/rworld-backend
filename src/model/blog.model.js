@@ -49,10 +49,10 @@ const BlogPostSchema = new mongoose.Schema(
 );
 
 // Middleware → auto-generate slug from title
-BlogPostSchema.pre("save", function (next) {
-  if (this.isModified("title")) {
-    this.slug = slugify(this.title, { lower: true, strict: true });
-  }
-  next();
-});
+// BlogPostSchema.pre("save", function (next) {
+//   if (this.isModified("title")) {
+//     this.slug = slugify(this.title, { lower: true, strict: true });
+//   }
+//   next();
+// });
 module.exports = mongoose.model("BlogPost", BlogPostSchema);
