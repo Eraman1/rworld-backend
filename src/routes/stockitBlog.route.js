@@ -6,7 +6,7 @@ const {
   deleteBlog,
   getAllBlogs,
   getBlogBySlug,
-} = require("../controller/blog.controller");
+} = require("../controller/StockitBlog.controller");
 const { verifyToken } = require("../middleware/auth.middleware");
 
 const router = express.Router();
@@ -14,7 +14,7 @@ const router = express.Router();
 /**
  * @swagger
  * tags:
- *   name: Blogs
+ *   name: Blogs (Stockit)
  *   description: Blog management APIs
  */
 
@@ -48,7 +48,7 @@ router.get("/", getAllBlogs);
  *         description: Blog found
  *       404:
  *         description: Blog not found
- */
+ */ 
 
 router.get("/slug/:slug", getBlogBySlug);
 

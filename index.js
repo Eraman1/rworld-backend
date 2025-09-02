@@ -11,6 +11,7 @@ const authRouter = require("./src/routes/auth.route");
 const enquiryRouter = require("./src/routes/enquiry.route");
 const blogRouter = require("./src/routes/blog.route");
 const stockEnquiryRouter = require("./src/routes/stockEnquiry.route");
+const stockitBlogRouter = require("./src/routes/stockitBlog.route");
 
 dotenv.config();
 connectDb();
@@ -61,6 +62,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/enquiry", enquiryRouter);
 app.use("/api/stock-enquiry", stockEnquiryRouter);
 app.use("/api/blogs", blogRouter);
+app.use("/api/stockit-blogs", stockitBlogRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
